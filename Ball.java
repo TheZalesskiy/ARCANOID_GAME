@@ -1,20 +1,20 @@
 package com.javarush.test.level24.lesson14.big01;
 
 /**
- * Класс для шарика в игре
+ * Class for ball game
  */
 public class Ball extends BaseObject
 {
-    //скорость
+    //speed
     private double speed;
-    //направление  (в градусах от 0 до 360)
+    //direction (degrees from 0 to 360)
     private double direction;
 
-    //текущее значение вектора движения (dx,dy)
+    //current motion vector (dx, dy)
     private double dx;
     private double dy;
 
-    //заморожен ли объект или может двигаться
+    //whether the object is frozen or can move
     private boolean isFrozen;
 
     public Ball(double x, double y, double speed, double direction)
@@ -53,9 +53,9 @@ public class Ball extends BaseObject
     }
 
     /**
-     * Устанавливаем новое направление движения.
-     * Тут же вычисляем и новый вектор.
-     * Тако подход удобно использовать при отскоках от стен.
+     * Install a new direction.
+     * Immediately and calculate a new vector .
+     * Taco approach is useful when a rebound from the walls.
      */
     public void setDirection(double direction)
     {
@@ -67,7 +67,7 @@ public class Ball extends BaseObject
     }
 
     /**
-     * Рисуем себя на "канвасе".
+     * Draw yourself on the "canvas" .
      */
     @Override
     public void draw(Canvas canvas)
@@ -76,7 +76,7 @@ public class Ball extends BaseObject
     }
 
     /**
-     * Двигаем себя на один шаг.
+     *Move yourself in one step.
      */
     public void move()
     {
@@ -89,8 +89,8 @@ public class Ball extends BaseObject
     }
 
     /**
-     * Проверяем не улетел ли шарик за стенку.
-     * Если да - отражаем его.
+     *Check whether the ball over the wall did not fall .
+     * If yes - reflect his.
      */
     public void checkRebound(int minx, int maxx, int miny, int maxy)
     {
@@ -120,9 +120,9 @@ public class Ball extends BaseObject
     }
 
     /**
-     * Запускам шарик.
+     * Runs the ball
      * isFrozen = false.
-     * Пересчитываем вектор движения (dx,dy).
+     * To recalculate the motion vector (dx, dy).
      */
     public void start()
     {
