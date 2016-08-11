@@ -1,11 +1,11 @@
 package com.javarush.test.level24.lesson14.big01;
 
 /**
- * Класс для объекта "кирпич".
+ * The class for "brick" of the object .
  */
 public class Brick extends BaseObject
 {
-    //картинка для отрисовки
+    //to draw a picture
     private static int[][] matrix = {
             {0, 0, 0, 0, 0},
             {0, 1, 1, 1, 0},
@@ -20,7 +20,7 @@ public class Brick extends BaseObject
     }
 
     /**
-     * Рисуем себя на холсте
+     * Draw yourself on the canvas
      */
     @Override
     public void draw(Canvas canvas)
@@ -29,7 +29,7 @@ public class Brick extends BaseObject
     }
 
     /**
-     * Ничего не делаем - кирпич неподвижен
+     * Do nothing - brick stationary
      */
     @Override
     public void move()
