@@ -4,21 +4,21 @@ import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 
 /**
- * Главный класс игры
+ * the main class of the game
  */
 public class Arcanoid {
-    //ширина и высота
+    
     private int width;
     private int height;
 
-    //список кирпичей
+    //list bricks
     private ArrayList<Brick> bricks = new ArrayList<Brick>();
-    //шарик
+    //ball
     private Ball ball;
-    //подставка
+    //Stand
     private Stand stand;
 
-    //игра закончена?
+    //game over?
     private boolean isGameOver = false;
 
     public Arcanoid(int width, int height) {
@@ -47,7 +47,7 @@ public class Arcanoid {
     }
 
     /**
-     * Рисуем на холсте границы и все объекты.
+     *Drawing on the canvas boundaries and objects .
      */
     public void draw(Canvas canvas) {
         drawBoders(canvas);
@@ -55,14 +55,14 @@ public class Arcanoid {
             current.draw(canvas);
         ball.draw(canvas);
         stand.draw(canvas);
-        //отрисуй границы
-        //отрисуй кирпичи
-        //отрисуй шарик
-        //отрисуй подставку
+        //will draw boundaries
+        //will draw bricks
+        //will draw Ball
+        //will draw Stand
     }
 
     /**
-     * Рисуем на холсте границы
+     * Drawing on the canvas boundaries
      */
     private void drawBoders(Canvas canvas) {
         //draw game
@@ -84,70 +84,69 @@ public class Arcanoid {
     }
 
     /**
-     * Основной цикл программы.
-     * Тут происходят все важные действия
+     * The main program loop.
+     * It's all important actions occur
      */
     public void run() throws Exception {
-        //Создаем холст для отрисовки.
+        //Create a canvas for drawing .
         Canvas canvas = new Canvas(width, height);
 
-        //Создаем объект "наблюдатель за клавиатурой" и стартуем его.
+        //Create an object " observer of the keyboard " and we start it.
         KeyboardObserver keyboardObserver = new KeyboardObserver();
         keyboardObserver.start();
 
-        //Исполняем цикл, пока игра не окончека
+        //Execute loop until the game is ending
         while (!isGameOver) {
-            //"наблюдатель" содержит события о нажатии клавиш?
+            //" Observer " contains events keystrokes ?
             if (keyboardObserver.hasKeyEvents()) {
                 KeyEvent event = keyboardObserver.getEventFromTop();
 
-                //Если "стрелка влево" - сдвинуть фигурку влево
+                //If the " left arrow " - move the figure to the left
                 if (event.getKeyCode() == KeyEvent.VK_LEFT)
                     stand.moveLeft();
-                    //Если "стрелка вправо" - сдвинуть фигурку вправо
+                    //If the " right arrow " - move the figure to the right
                 else if (event.getKeyCode() == KeyEvent.VK_RIGHT)
                     stand.moveRight();
-                    //Если "пробел" - запускаем шарик
+                    //If the "gap" - run the ball
                 else if (event.getKeyCode() == KeyEvent.VK_SPACE)
                     ball.start();
             }
 
-            //двигаем все объекты
+            //We move objects
             move();
 
-            //проверяем столкновения
+            //check collision
             checkBricksBump();
             checkStandBump();
 
-            //проверяем, что шарик мог улететь через дно.
+            //check that the ball could fly through the bottom.
             checkEndGame();
 
-            //отрисовываем все объекты
+            //We draw the objects
             canvas.clear();
             draw(canvas);
             canvas.print();
 
-            //пауза
+            //pause
             Thread.sleep(300);
         }
 
-        //Выводим сообщение "Game Over"
+        //writing message "Game Over"
         System.out.println("Game Over!");
     }
 
     /**
-     * Двигаем шарик и подставку.
+     * We move the ball and stand.
      */
     public void move() {
         ball.move();
         stand.move();
-        //двигай шарик
-        //двигай подставку
+        
     }
 
     /**
-     * Проверяем столкновение с кирпичами.
-     * Если столкновение было - шарик отлетает в случайном направлении 0..360 градусов
+     * Check collision with bricks .
+     * If a collision was - the ball flies in a random direction 0..360 degrees
      */
     public void checkBricksBump() {
         for (Brick currentBrick : bricks) {
@@ -158,30 +157,31 @@ public class Arcanoid {
                 break;
             }
         }
-        //Тут проверь - столкнулся ли шарик с кирпичем.
-        //Если да - кирпичь удалить, а шарик запустить в случайно направлении.
+        //Then check - whether the ball collided with a brick .
+        // If it is - a brick to remove and run the ball in a random direction .
     }
 
     /**
-     * Проверяем столкновение с подставкой.
-     * Если столкновение было - шарик отлетает в случайном направлении  вверх 80..100 градусов.
+     * Check collision with stand .
+     * If a collision was - the ball flies in a random direction up 80..100 degrees
      */
     public void checkStandBump() {
         if (ball.isIntersec(stand)) {
             double angel = 80 + Math.random()*20;
             ball.setDirection(angel);
         }
-        //Тут проверь - столкнулся ли шарик с подставкой.
-        //Если да - запустить шарик  вверх на 80..100 градусов.
+        //Then check - whether the ball collided with a stand .
+        // If yes - run the ball up to 80..100 degrees .
     }
 
     /**
-     * Проверяем - не улетел ли шарик через дно.
-     * Если да - игра окончена (isGameOver = true)
+     * Check - whether the ball flew through the bottom .
+     * If yes - the game is over (isGameOver = true)
      */
     public void checkEndGame() {
         if (ball.getY() >= height)
-        isGameOver = true;//Если шарик улетел за нижнюю границы - игра окончена.
+        //If the ball flew over the bottom border - the game is over
+        isGameOver = true;          
     }
 
     public int getWidth() {
