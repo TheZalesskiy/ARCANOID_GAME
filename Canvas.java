@@ -1,14 +1,14 @@
 package com.javarush.test.level24.lesson14.big01;
 
 /**
- * Класс-холст для отрисовки.
+ * Class - canvas for drawing.
  */
 public class Canvas
 {
-    //ширина и высота
+    //widht & height
     private int width;
     private int height;
-    //матрица, где рисуем. символ - это цвет.
+    //matrix where the paint . symbol - the color
     private char[][] matrix;
 
     public Canvas(int width, int height)
@@ -19,7 +19,7 @@ public class Canvas
     }
 
     /**
-     * Очищаем холст
+     * clear canvas
      */
     public void clear()
     {
@@ -27,8 +27,8 @@ public class Canvas
     }
 
     /**
-     * Печатаем переданную фигуру в указанных координатах уветом c.
-     * Если переданный массив содержит единицы, то на холсте им будут соответствовать символы - с.
+     * Prints the transmitted figure in these coordinates uvetom c.
+     * If the transmitted array contains one, then on the canvas they will meet characters - with .
      */
     public void drawMatrix(double x, double y, int[][] matrix, char c)
     {
@@ -46,7 +46,7 @@ public class Canvas
     }
 
     /**
-     * Ставим одну точку на холсте с координатами (x,y) и цветом - c.
+     * We put a point on the canvas with the coordinates (x, y) and color - c.
      */
     public void setPoint(double x, double y, char c)
     {
@@ -59,7 +59,7 @@ public class Canvas
     }
 
     /**
-     * Печатаем содержимое холста на экран.
+     *We print the contents of the canvas to the screen 
      */
     public void print()
     {
