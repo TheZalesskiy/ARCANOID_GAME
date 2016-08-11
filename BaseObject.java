@@ -1,14 +1,14 @@
 package com.javarush.test.level24.lesson14.big01;
 
 /**
- * Базовый класс для всех объектов игры.
+ * The base class for all objects in the game 
  */
 public abstract class BaseObject
 {
-    //координаты
+    //coordinates
     protected double x;
     protected double y;
-    //радиус объекта
+    //object range
     protected double radius;
 
     protected BaseObject(double x, double y, double radius)
@@ -49,17 +49,17 @@ public abstract class BaseObject
     }
 
     /**
-     * Метод рисует свой объект на "канвасе".
+     * The method draws your object on the "canvas" 
      */
     public abstract void draw(Canvas canvas);
 
     /**
-     * Двигаем себя на один ход.
+     * Move yourself in one turn 
      */
     public abstract void move();
 
     /**
-     * Проверяем - не выходит ли (x,y) за границы.
+     * Check - Do not go (x, y) abroad .
      */
     public void checkBorders(double minx, double maxx, double miny, double maxy)
     {
@@ -70,7 +70,7 @@ public abstract class BaseObject
     }
 
     /**
-     * Проверяем - пересекаются ли переданный(o) и наш(this) объекты.
+     * Check - whether the transmitted cross (o) and our (this) objects 
      */
     public boolean isIntersec(BaseObject o)
     {
