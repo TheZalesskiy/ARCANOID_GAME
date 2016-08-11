@@ -1,11 +1,11 @@
 package com.javarush.test.level24.lesson14.big01;
 
 /**
- *  Подставка, с помощью которой отражаем мячик.
+ *  Stand by which reflects the ball .
  */
 public class Stand extends BaseObject
 {
-    //картинка для отрисовки
+    // Image to draw
     private static int[][] matrix = {
             {1, 1, 1, 1, 1},
             {1, 0, 0, 0, 1},
@@ -14,9 +14,9 @@ public class Stand extends BaseObject
             {0, 0, 0, 0, 0},
     };
 
-    //скорость
+    //speed
     private double speed = 1;
-    //направление (-1 влево, +1 вправо)
+    //direction (-1 left, +1 right)
     private double direction = 0;
 
     public Stand(double x, double y)
@@ -25,7 +25,7 @@ public class Stand extends BaseObject
     }
 
     /**
-     * Метод передвигает подставку в соответствии с текущим значением direction.
+     * The method moves the stand in accordance with the current value direction.
      */
     public void move()
     {
@@ -36,7 +36,7 @@ public class Stand extends BaseObject
     }
 
     /**
-     * direction устанавливается равным -1
+     * direction is set to -1
      */
     public void moveLeft()
     {
@@ -44,7 +44,7 @@ public class Stand extends BaseObject
     }
 
     /**
-     * direction устанавливается равным +1
+     * direction is set to +1
      */
     public void moveRight()
     {
@@ -62,7 +62,7 @@ public class Stand extends BaseObject
     }
 
     /**
-     * Отрисовываем себя на холсте
+     * Draw yourself on the canvas
      */
     @Override
     public void draw(Canvas canvas)
