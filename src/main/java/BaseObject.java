@@ -1,5 +1,3 @@
-package com.javarush.test.level24.lesson14.big01;
-
 /**
  * The base class for all objects in the game 
  */

@@ -1,5 +1,3 @@
-package com.javarush.test.level24.lesson14.big01;
-
 /**
  * The class for "brick" of the object .
  */
